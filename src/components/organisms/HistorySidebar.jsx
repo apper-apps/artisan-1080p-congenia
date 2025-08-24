@@ -25,10 +25,10 @@ const HistorySidebar = ({
             <p className="text-gray-500 text-xs mt-1">Your recent creations will appear here</p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 gap-3">
-            {history.map((image) => (
+<div className="grid grid-cols-1 gap-3">
+            {history.map((image, index) => (
               <HistoryThumbnail
-                key={image.id}
+                key={image?.id || `history-${index}-${image?.timestamp || Date.now()}`}
                 image={image}
                 onClick={onImageSelect}
                 onDelete={onImageDelete}
