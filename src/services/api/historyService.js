@@ -26,7 +26,7 @@ export const addToHistory = async (imageData) => {
     timestamp: imageData.timestamp || new Date().toISOString()
   };
   
-  generationHistory = [newImage, ...generationHistory.slice(0, 4)];
+  generationHistory = [newImage, ...generationHistory];
   return newImage;
 };
 

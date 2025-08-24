@@ -6,7 +6,7 @@ import HistorySidebar from "@/components/organisms/HistorySidebar";
 import { getGenerationHistory, deleteGeneratedImage } from "@/services/api/historyService";
 
 const HomePage = () => {
-  const [history, setHistory] = useState([]);
+const [history, setHistory] = useState([]);
   const [currentImage, setCurrentImage] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -29,8 +29,8 @@ const HomePage = () => {
     }
   };
 
-  const handleImageGenerated = (newImage) => {
-    setHistory(prev => [newImage, ...prev.slice(0, 4)]);
+const handleImageGenerated = (newImage) => {
+    setHistory(prev => [newImage, ...prev]);
     setCurrentImage(newImage);
   };
 
@@ -56,10 +56,9 @@ const HomePage = () => {
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      
-      <main className="max-w-7xl mx-auto p-6">
+<main className="max-w-7xl mx-auto p-6">
         <div className="lg:grid lg:grid-cols-4 lg:gap-8 space-y-8 lg:space-y-0">
-          {/* Main Content */}
+{/* Main Content */}
           <div className="lg:col-span-3">
             <ImageGenerator
               onImageGenerated={handleImageGenerated}
@@ -72,7 +71,7 @@ const HomePage = () => {
           <div className="lg:col-span-1">
             <div className="lg:sticky lg:top-24">
               <HistorySidebar
-                history={history}
+                history={history.slice(0, 5)}
                 currentImage={currentImage}
                 onImageSelect={handleImageSelect}
                 onImageDelete={handleImageDelete}
