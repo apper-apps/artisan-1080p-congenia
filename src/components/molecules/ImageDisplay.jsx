@@ -27,9 +27,19 @@ const ImageDisplay = ({
     return null;
   }
 
+const getAspectRatioClass = (ratio) => {
+    switch (ratio) {
+      case "1:1": return "aspect-square";
+      case "3:4": return "aspect-[3/4]";
+      case "4:3": return "aspect-[4/3]";
+      case "16:9": return "aspect-video";
+      default: return "aspect-square";
+    }
+  };
+
   return (
     <Card className={cn("p-0 overflow-hidden group", className)}>
-      <div className="relative aspect-square bg-surface/30">
+      <div className={cn("relative bg-surface/30", getAspectRatioClass(image.aspectRatio))}>
         {isLoading && (
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="w-8 h-8 border-2 border-primary-500 border-t-transparent rounded-full animate-spin" />

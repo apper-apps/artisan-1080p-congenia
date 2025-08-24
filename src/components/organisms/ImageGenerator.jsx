@@ -8,6 +8,7 @@ import GenerateButton from "@/components/molecules/GenerateButton";
 import ImageDisplay from "@/components/molecules/ImageDisplay";
 import ProgressRing from "@/components/molecules/ProgressRing";
 import { generateImage } from "@/services/api/imageService";
+import DimensionSelector from "@/components/molecules/DimensionSelector";
 
 const ImageGenerator = ({ 
   onImageGenerated, 
@@ -16,9 +17,9 @@ const ImageGenerator = ({
   className 
 }) => {
   const [prompt, setPrompt] = useState("");
+  const [aspectRatio, setAspectRatio] = useState("1:1");
   const [isGenerating, setIsGenerating] = useState(false);
   const [progress, setProgress] = useState(0);
-
   const handleGenerate = async () => {
     if (!prompt.trim()) {
       toast.error("Please enter a description for your image");
@@ -37,9 +38,9 @@ const ImageGenerator = ({
     }, 200);
 
     try {
-      const generatedImage = await generateImage({
+const generatedImage = await generateImage({
         prompt: prompt.trim(),
-        aspectRatio: "1:1",
+        aspectRatio: aspectRatio,
         style: "Photorealistic"
       });
       
@@ -101,9 +102,13 @@ const ImageGenerator = ({
             value={prompt}
             onChange={setPrompt}
             onSubmit={handleGenerate}
-            placeholder="A serene mountain landscape at sunset with a crystal clear lake reflecting the golden sky..."
+placeholder="A serene mountain landscape at sunset with a crystal clear lake reflecting the golden sky..."
           />
           
+          <DimensionSelector
+            value={aspectRatio}
+            onChange={setAspectRatio}
+          />
           <GenerateButton
             onClick={handleGenerate}
             disabled={!prompt.trim() || isGenerating}
