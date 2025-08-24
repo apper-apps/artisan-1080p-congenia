@@ -1,0 +1,42 @@
+[
+  {
+    "Id": 1,
+    "prompt": "A majestic dragon flying over a mystical forest with glowing trees and ethereal light",
+    "imageUrl": "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&h=800&fit=crop",
+    "timestamp": "2024-01-15T14:30:00Z",
+    "aspectRatio": "1:1",
+    "style": "Fantasy"
+  },
+  {
+    "Id": 2,
+    "prompt": "Futuristic cityscape at night with neon lights and flying cars in cyberpunk style",
+    "imageUrl": "https://images.unsplash.com/photo-1518709268805-4e9042af2ac5?w=800&h=800&fit=crop",
+    "timestamp": "2024-01-15T13:15:00Z",
+    "aspectRatio": "1:1",
+    "style": "Cyberpunk"
+  },
+  {
+    "Id": 3,
+    "prompt": "Serene mountain lake reflecting snow-capped peaks during golden hour",
+    "imageUrl": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=800&fit=crop",
+    "timestamp": "2024-01-15T12:00:00Z",
+    "aspectRatio": "1:1",
+    "style": "Photorealistic"
+  },
+  {
+    "Id": 4,
+    "prompt": "Abstract geometric patterns in vibrant colors with flowing gradients",
+    "imageUrl": "https://images.unsplash.com/photo-1557683316-973673baf926?w=800&h=800&fit=crop",
+    "timestamp": "2024-01-15T10:45:00Z",
+    "aspectRatio": "1:1",
+    "style": "Abstract"
+  },
+  {
+    "Id": 5,
+    "prompt": "Ancient temple ruins overgrown with tropical vegetation in misty atmosphere",
+    "imageUrl": "https://images.unsplash.com/photo-1539650116574-75c0c6d13ed4?w=800&h=800&fit=crop",
+    "timestamp": "2024-01-15T09:30:00Z",
+    "aspectRatio": "1:1",
+    "style": "Cinematic"
+  }
+]
