@@ -1,7 +1,8 @@
-import { useState } from "react";
-import { cn } from "@/utils/cn";
+import React, { useState } from "react";
 import { format } from "date-fns";
+import { cn } from "@/utils/cn";
 import ApperIcon from "@/components/ApperIcon";
+import { downloadImage } from "@/utils/downloadImage";
 
 const HistoryThumbnail = ({ 
   image, 
@@ -54,17 +55,31 @@ const HistoryThumbnail = ({
           />
         )}
         
-        {onDelete && (
+<div className="absolute top-2 right-2 flex gap-1">
           <button
-            onClick={(e) => {
+            onClick={async (e) => {
               e.stopPropagation();
-              onDelete(image.id);
+              const filename = image.prompt ? 
+                `artisan-ai-${image.prompt.substring(0, 30)}` : 
+                `artisan-ai-${image.id || Date.now()}`;
+              await downloadImage(image.imageUrl, filename, 'jpg', 0.9);
             }}
-            className="absolute top-2 right-2 w-6 h-6 bg-red-500/80 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 hover:bg-red-500"
+            className="w-6 h-6 bg-primary-500/80 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 hover:bg-primary-500"
           >
-            <ApperIcon name="X" size={12} />
+            <ApperIcon name="Download" size={12} />
           </button>
-        )}
+          {onDelete && (
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                onDelete(image.id);
+              }}
+              className="w-6 h-6 bg-red-500/80 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 hover:bg-red-500"
+            >
+              <ApperIcon name="X" size={12} />
+            </button>
+          )}
+        </div>
       </div>
       
       <div className="p-2">

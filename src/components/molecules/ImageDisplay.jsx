@@ -1,13 +1,15 @@
-import { useState } from "react";
+import React, { useState } from "react";
+import { QUALITY_PRESETS, SUPPORTED_FORMATS, downloadImage } from "@/utils/downloadImage";
 import { cn } from "@/utils/cn";
 import ApperIcon from "@/components/ApperIcon";
-import Button from "@/components/atoms/Button";
 import Card from "@/components/atoms/Card";
+import Button from "@/components/atoms/Button";
+import DownloadDropdown from "@/components/molecules/DownloadDropdown";
 
 const ImageDisplay = ({ 
-  image, 
+image, 
   onDownload, 
-  onFullscreen, 
+  onFullscreen,
   className 
 }) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -72,16 +74,12 @@ const getAspectRatioClass = (ratio) => {
               onClick={onFullscreen}
               className="backdrop-blur-sm"
             >
-              <ApperIcon name="Maximize2" size={16} />
+<ApperIcon name="Maximize2" size={16} />
             </Button>
-            <Button
-              variant="secondary"
-              size="sm"
-              onClick={onDownload}
-              className="backdrop-blur-sm"
-            >
-              <ApperIcon name="Download" size={16} />
-            </Button>
+            <DownloadDropdown 
+              image={image} 
+              onDownload={onDownload} 
+            />
           </div>
         )}
       </div>

@@ -159,7 +159,7 @@ placeholder="A serene mountain landscape at sunset with a crystal clear lake ref
           
           <ImageDisplay
             image={currentImage}
-            onDownload={handleDownload}
+onDownload={handleDownload}
             onFullscreen={handleFullscreen}
           />
         </div>
