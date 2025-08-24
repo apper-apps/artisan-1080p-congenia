@@ -9,6 +9,7 @@ import ImageDisplay from "@/components/molecules/ImageDisplay";
 import ProgressRing from "@/components/molecules/ProgressRing";
 import { generateImage } from "@/services/api/imageService";
 import DimensionSelector from "@/components/molecules/DimensionSelector";
+import StyleSelector from "@/components/molecules/StyleSelector";
 
 const ImageGenerator = ({ 
   onImageGenerated, 
@@ -17,7 +18,8 @@ const ImageGenerator = ({
   className 
 }) => {
   const [prompt, setPrompt] = useState("");
-  const [aspectRatio, setAspectRatio] = useState("1:1");
+const [aspectRatio, setAspectRatio] = useState("1:1");
+  const [stylePreset, setStylePreset] = useState("Photorealistic");
   const [isGenerating, setIsGenerating] = useState(false);
   const [progress, setProgress] = useState(0);
   const handleGenerate = async () => {
@@ -40,8 +42,8 @@ const ImageGenerator = ({
     try {
 const generatedImage = await generateImage({
         prompt: prompt.trim(),
-        aspectRatio: aspectRatio,
-        style: "Photorealistic"
+aspectRatio: aspectRatio,
+        style: stylePreset
       });
       
       setProgress(100);
@@ -108,6 +110,11 @@ placeholder="A serene mountain landscape at sunset with a crystal clear lake ref
           <DimensionSelector
             value={aspectRatio}
             onChange={setAspectRatio}
+/>
+          
+          <StyleSelector
+            value={stylePreset}
+            onChange={setStylePreset}
           />
           <GenerateButton
             onClick={handleGenerate}
